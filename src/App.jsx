@@ -40,6 +40,13 @@ function App() {
     setPage("convert");
   };
 
+  const goToHowItWorks = () => {
+    document.getElementById("how-it-works")?.scrollIntoView({
+      behavior: "smooth"
+    });
+  };
+
+
   return (
     <div className="app">
 
@@ -72,16 +79,12 @@ function App() {
               Home
             </button>
 
-            <button onClick={goToConvert}>
-              Features
+            <button onClick={goToHowItWorks}>
+              How It Works
             </button>
 
-            <button onClick={goToConvert}>
-              How it Works
-            </button>
-
-            <button onClick={goToConvert}>
-              Datasets
+            <button onClick={() => setPage("convert")}>
+              Convert
             </button>
 
             <button>
@@ -110,6 +113,7 @@ function App() {
         {page === "home" && (
           <HomePage
             setPage={setPage}
+            goToHowItWorks={goToHowItWorks}
           />
         )}
 
@@ -227,7 +231,7 @@ function Sidebar({ page, setPage }) {
    HOME PAGE
 ========================================================= */
 
-function HomePage({ setPage }) {
+function HomePage({ setPage, goToHowItWorks }) {
 
   return (
     <section className="home-page">
@@ -267,9 +271,11 @@ function HomePage({ setPage }) {
               <ArrowRight size={18} />
             </button>
 
-
-            <button className="secondary-button">
-              Learn More
+            <button
+              className="secondary-button"
+              onClick={goToHowItWorks}
+            >
+              How It Works
             </button>
 
           </div>
@@ -376,7 +382,7 @@ function HomePage({ setPage }) {
 
       {/* HOW IT WORKS */}
 
-      <div className="how-section">
+      <div className="how-section" id="how-it-works">
 
         <div className="section-title">
 
